@@ -1,0 +1,18 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+ <form action="{% url 'update_schedule' %}" method="post">
+    {% csrf_token %}
+    <table align="center" border="2">
+    {% if data %}
+        <tr><th>Course Id :</th><th><input type="text" name="c1" value={{ data.Course_Id }}></th></tr>
+        <tr><th>Course Name :</th><th><input type="text" name="c2" value={{ data.Course_Name }}></th></tr>
+        <tr><th>Faculty   : </th><th> <input type="text" name="c3" value={{ data.Faculty }}></th></tr>
+        <tr><th>Date     :</th><th><input type="date" name="c4" value={{ data.Date }}></th></tr>
+        <tr><th>Time     :</th><th><input type="time" name="c5" value={{ data.Time }}></th></tr>
+        <tr><th>Fee   :</th><th><input type="number" name="c6" value={{ data.Fee }}></th></tr>
+        <tr><th>Duration :</th><th><input type="number" name="c7" value={{ data.Duration }}></th></tr>
+        <tr><th colspan="2"><button type="submit">Submit</button></th></tr>
+    {% endif %}
+    </table>
+    </form>
+{% endblock %}

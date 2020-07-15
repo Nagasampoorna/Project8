@@ -1,0 +1,52 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+    <style>
+    #four{
+           background-color: burlywood;
+           color: darkred;
+           text-align: center;
+           padding: 5px;
+           font-family:"Fira Code Light" ;
+           font-size: 30px;
+           width: 500px;
+    }
+        #five{
+            color: brown;
+           background-color: lightseagreen;
+           text-align: center;
+           padding: 5px;
+           font-family:"Calibri Light";
+           font-size: 20px;
+        }
+    </style>
+
+<table align="center" border="0">
+    <tr>
+        <th id="five">
+            <a href="{% url 'schedule_class' %}">
+                SCHEDULE NEW CLASS</a>
+        </th>
+        <th id="five">
+            <a href="{% url 'view_class' %}">
+                VIEW ALL SCHEDULED  CLASSES</a>
+        </th>
+    </tr>
+</table>
+ <form action="{% url 'save_course' %}" method="post">
+            {% csrf_token %}
+       <table align="center" border="2">
+           {% for x in messages %}
+                 {{ x }}
+           {% endfor %}
+           <tr>
+               <th colspan="2"> SCHEDULE A NEW COURSE </th>
+           </tr>
+           <tr>
+               <th>{{ form }}</th>
+           </tr>
+         <tr><th colspan="2">
+             <button type="submit">Register</button>
+         </th></tr>
+       </table>
+        </form>
+{% endblock %}

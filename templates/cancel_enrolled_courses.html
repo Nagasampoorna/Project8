@@ -1,0 +1,24 @@
+
+{% block sampoorna %}
+{% include 'student_page.html' %}
+<table class="table" align="center" border="2">
+<tr>
+    <th>CourseNo</th>
+    <th>CourseName</th>
+    <th>Delete</th>
+</tr>
+    {% for x in data %}
+    <tr>
+       <th>{{ x.Course_Id }}</th>
+       <th>{{ x.Course_Name }}</th>
+
+      <form action="{% url 'delete_enrol' %}" method="post">
+          {% csrf_token %}
+          <th><input type="hidden" value="{{ x.Course_Id }}" name= "cid" >
+          <input type="hidden" value="{{ request.session.Student_Id }}" name="sid">
+          <button type="submit">Delete</button></th>
+      </form>
+</tr>
+    {% endfor %}
+</table>
+{% endblock %}

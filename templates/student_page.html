@@ -1,0 +1,14 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+{#    {% include 'student_menu.html' %}#}
+ <table align="center" border="2">
+    <tr><th colspan="4">
+        STUDENT ENROLL PAGE</th></tr>
+        <tr>
+            <th><a href="{% url 'enrol_course' %}"> Enrol the Course</a></th>
+            <th><a href="{% url 'view_enrolled_courses' %}?sid={{ request.session.Student_Id }}"> View all the enrolled courses</a></th>
+            <th><a href="{% url 'cancel_enrolled_courses' %}?sid={{ request.session.Student_Id }}"> Cancel the enrolled courses</a></th>
+            <th><a href="{% url 'logout' %}">Logout</a></th>
+        </tr>
+    </table>
+{% endblock %}

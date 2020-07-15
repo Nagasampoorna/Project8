@@ -1,0 +1,39 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+    <style>
+
+       #two{
+           background-color: burlywood;
+           color: darkred;
+           text-align: center;
+           padding: 5px;
+           font-family: Arial;
+           font-size: 30px;
+           width: 300px;
+       }
+       #three{
+           color: brown;
+           background-color: lightseagreen;
+           text-align: center;
+           padding: 5px;
+           font-family:Calibri;
+           font-size: 20px;
+       }
+   </style>
+
+  <form action="{% url 'save_admin' %}" method="post">
+      {% csrf_token %}
+   <table align="center" border="0">
+       <tr><th id="two"> ADMIN LOGIN </th>
+       </tr>
+       <tr><th>
+           <table align="center" border="2">
+               <tr><th id="three">UserName : <input type="text" placeholder="UserName" required name="t1"></th></tr>
+               <tr><th id="three">PassWord : <input type="password" placeholder="PassWord" required name="t2"></th></tr>
+               <tr><th id="three"><button type="submit">Login</button></th></tr>
+           </table>
+
+       </th></tr>
+   </table>
+  </form>
+{% endblock %}

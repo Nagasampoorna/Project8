@@ -1,0 +1,28 @@
+{% block sampoorna %}
+    {% include 'student_page.html' %}
+
+{% if not data %}
+<h4>No Courses are enrolled</h4>
+    {% else %}
+    <table class="table" align="center" border="2">
+<tr>
+    <th>Course Id</th>
+    <th>Course Name</th>
+    <th>Faculty </th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Fee</th>
+</tr>
+{% for x in data %}
+<tr>
+    <th>{{ x.Course_Id }}</th>
+    <th>{{ x.Course_Name }}</th>
+    <th>{{ x.Faculty }}</th>
+    <th>{{ x.Date }}</th>
+    <th>{{ x.Time }}</th>
+    <th>{{ x.Fee }}</th>
+</tr>
+ {% endfor %}
+        </table>
+{% endif %}
+{% endblock %}

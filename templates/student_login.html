@@ -1,0 +1,23 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+    {% include 'student_menu.html' %}
+     <form action="{% url 'student_page' %}" method="post">
+    {% csrf_token %}
+    <table align="center" border="2">
+    <tr>
+        <th>UserName:</th><th><input type="text" required name="s1"></th>
+    </tr>
+    <tr>
+        <th>Password:</th><th><input type="password" required name="s2"></th>
+    </tr>
+    <tr>
+        <th colspan="2"><button type="submit">Login</button> </th>
+    </tr>
+        {% if error %}
+            {{ error }}
+        {% endif %}
+    </table>
+    </form>
+{% endblock %}
+{% include 'student_page.html' %}
+

@@ -1,0 +1,29 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+   {% load static %}
+   <table align="center" border="2">
+
+    <tr>
+        <th>CourseName</th>
+        <th>Faculty</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Fee</th>
+        <th>Duration</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+<tr>
+    {% for x in data %}
+      <th>{{ x.Course_Name }}</th>
+      <th>{{ x.Faculty }}</th>
+      <th>{{ x.Date }}</th>
+      <th>{{ x.Time }}</th>
+      <th>{{ x.Fee }}</th>
+      <th>{{ x.Duration }}</th>
+        <th><a href="{% url 'update_view' %}?Course_Name={{ x.Course_Name }}"><button type="submit">yes</button></a></th>
+        <th><a href="{% url 'delete_view' %}?Course_Name={{ x.Course_Name }}">Delete</a></th>
+      </tr>
+{% endfor %}
+    </table>
+{% endblock %}
