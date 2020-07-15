@@ -4,6 +4,8 @@ from django.contrib import messages
 from app8.models import CourseModel,StudentModel,stud_course
 from app8.forms import CourseForm,StudentForm
 
+stdid = None
+
 def showIndex(request):
     return render(request,'index.html')
 def save_admin(request):
@@ -103,17 +105,22 @@ def view_enrolled_courses(request):
     coures = [CourseModel.objects.get(Course_Id=x.cid) for x in res]
     return render(request, 'view_enrolled_courses.html', {'data': coures})
 def cancel_enrolled_courses(request):
-    sid = request.GET.get('sid')
-    sc = stud_course.objects.filter(sid=sid)
+    global stdid
+    stdid = request.GET.get('sid')
+    sc = stud_course.objects.filter(sid=stdid)
     data = [CourseModel.objects.get(Course_Id=x.cid) for x in sc]
     return render(request,'cancel_enrolled_courses.html', {'data': data})
 def delete_enrol(request):
     cid = request.POST.get('cid')
     sid = request.POST.get('sid')
     stud_course.objects.get(cid=cid, sid=sid).delete()
-    res = stud_course.objects.filter(sid=sid)
-    data = [stud_course.objects.get(cid=x.cid) for x in res]
-    return render(request,"cancel_enrolled_courses.html", {"data": data})
+    # res = stud_course.objects.filter(sid=sid)
+    # data = [stud_course.objects.get(cid=x.cid) for x in res]
+    # return render(request,"cancel_enrolled_courses.html", {"up_data": data})
+    messages.success(request,"Deleted Successfully")
+    return  redirect('cancel_enrolled_courses')
+def update_course(request):
+    return redirect('cancel_enrolled_courses')
 def logout(request):
     # del request.session['sid']
     return redirect('student_login')

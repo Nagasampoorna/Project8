@@ -1,6 +1,11 @@
 
 {% block sampoorna %}
 {% include 'student_page.html' %}
+    {% if messages %}
+        {% for success in messages %}
+            {{ success }} <a href="{% url 'cancel_enrolled_courses' %}?sid={{ request.session.Student_Id }}">See your Updated Courses</a>
+        {% endfor %}
+    {% else %}
 <table class="table" align="center" border="2">
 <tr>
     <th>CourseNo</th>
@@ -11,6 +16,7 @@
     <tr>
        <th>{{ x.Course_Id }}</th>
        <th>{{ x.Course_Name }}</th>
+{#        <th><a href="{%  url 'delete_enrol' %}?Course_id={{ x.Course_Id}}&sid={{ request.session.Student_id }}">Delete</a></th></th>#}
 
       <form action="{% url 'delete_enrol' %}" method="post">
           {% csrf_token %}
@@ -18,7 +24,9 @@
           <input type="hidden" value="{{ request.session.Student_Id }}" name="sid">
           <button type="submit">Delete</button></th>
       </form>
+
 </tr>
     {% endfor %}
 </table>
+    {% endif %}
 {% endblock %}
