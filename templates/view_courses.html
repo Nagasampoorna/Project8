@@ -1,0 +1,25 @@
+{% extends 'common.html' %}
+{% block sampoorna %}
+         <table align="center" border="2" >
+         <tr><th colspan="7">Available Courses</th></tr>
+          <tr>
+              <th>Course Id</th>
+              <th>Course Name</th>
+              <th>Faculty</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Fee</th>
+              <th>Duration</th>
+          </tr>
+              {% for x in data %}
+                  <tr>
+                      <th>{{ x.Course_Id }}</th>
+                     <th>{{ x.Course_Name }}</th>
+                     <th>{{ x.Faculty }}</th>
+                     <th>{{ x.Date }}</th>
+                     <th>{{ x.Time }}</th>
+                     <th>{{ x.Fee }}</th>
+                     <th>{{ x.Duration }}</th></tr>
+              {% endfor %}
+         </table>
+{% endblock %}

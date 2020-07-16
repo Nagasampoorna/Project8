@@ -126,3 +126,11 @@ def logout(request):
     return redirect('student_login')
 def contact(request):
     return render(request,"contact.html")
+
+def courses(request):
+    data = CourseModel.objects.all()
+    return render(request, "view_courses.html", {"data": data})
+
+
+def search(request):
+    return render(request,'search.html')
